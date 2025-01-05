@@ -1,0 +1,32 @@
+CODE1
+#Function for given an array arr of integers, find all the elements that occur more than once in the array. If no element repeats, return an empty array.
+
+
+class Solution:
+    def findDuplicates(self, arr):
+        # code here
+        from collections import Counter
+        counts=Counter(arr)
+        result=[key for key, value in counts.items() if value>1]
+        return result;
+
+
+
+
+CODE2
+#You are given an array arr of positive integers. Your task is to find all the leaders in the array. An element is considered a leader if it is greater than or equal to all elements to its right. The rightmost element is always a leader.
+
+class Solution:
+    def leaders(self, arr):
+        # code here
+      leaders = []
+      max_from_right = float('-inf')  # Start with the smallest possible value
+    
+    # Traverse the array from right to left
+      for num in reversed(arr):
+         if num >= max_from_right:
+            leaders.append(num)
+            max_from_right = num  # Update the current leader
+    
+      
+      return leaders[::-1] 
