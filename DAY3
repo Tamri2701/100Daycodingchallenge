@@ -1,0 +1,35 @@
+CODE1
+#Given an array arr[] containing only 0s, 1s, and 2s. Sort the array in ascending order.
+
+class Solution:
+    # Function to sort an array of 0s, 1s, and 2s
+    def sort012(self, arr):
+        # code here
+        low=0
+        mid=0
+        high=len(arr)-1
+        
+        while mid<=high:
+            if arr[mid]==0:
+                arr[low],arr[mid]=arr[mid],arr[low]
+                low+=1
+                mid+=1
+            elif arr[mid]==1:
+                 mid+=1
+            else:
+                arr[mid],arr[high]=arr[high],arr[mid]
+                high-=1
+        return arr
+
+CODE2
+#Given an integer k and array arr. Your task is to return the position of the first occurrence of k in the given array and if element k is not present in the array then return -1.                   
+class Solution:
+    def search(self, k: int, arr: List[int]) -> int:
+        # code here
+        for i in range(len(arr)):
+            if arr[i]==k:
+                return i+1
+
+        return -1
+                
+
