@@ -1,0 +1,57 @@
+1-while traversing the matrix in spiral form.
+
+Examples:
+
+Input: mat[][] = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+Output: [1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10]
+
+
+class Solution:
+    # Function to return a list of integers denoting spiral traversal of matrix.
+    def spirallyTraverse(self, mat):
+          if not mat or not mat[0]:
+           return []
+          result = [] 
+          top, bottom = 0, len(mat) - 1
+          left, right = 0, len(mat[0]) - 1
+
+          while top <= bottom and left <= right:
+      
+             for i in range(left, right + 1):
+               result.append(mat[top][i])
+             top += 1
+
+   
+             for i in range(top, bottom + 1):
+               result.append(mat[i][right])
+             right -= 1
+
+  
+             if top <= bottom:
+               for i in range(right, left - 1, -1):
+                result.append(mat[bottom][i])
+               bottom -= 1
+
+    
+             if left <= right:
+               for i in range(bottom, top - 1, -1):
+                result.append(mat[i][left])
+               left += 1
+
+          return result
+        # code here
+
+
+
+#Given two different arrays arr1[] and arr2[], the task is to merge the two unsorted arrays and return a sorted array.
+
+
+class Solution:
+    def sortedMerge(self, arr1,arr2,res):
+        # Your code goes here
+        merged_array = arr1 + arr2  
+        merged_array.sort()
+        
+     
+        for i in range(len(merged_array)):
+            res[i] = merged_array[i]
