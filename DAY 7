@@ -1,0 +1,30 @@
+For Day 7, I tackled a fascinating coding problem:
+ 💻 Finding the Majority Element in an Array
+My approach:
+1️⃣ Boyer-Moore Voting Algorithm:
+Efficiently identifies a potential majority element in O(n)O(n) time and O(1)O(1) space.
+Then, verifies if it indeed appears more than n/2n/2 times.
+2️⃣ Key Highlights:
+Avoided brute-force and leveraged an elegant linear-time solution.
+Learned how to optimize code for performance and minimize memory usage.
+
+
+class Solution:
+    def majorityElement(self, arr):
+        #Your code here
+        candi=0
+        count=0
+        
+        for num in arr:
+            if count==0:
+                candi=num
+                count=1
+            elif num==candi:
+                count+=1
+            else:
+                count-=1
+        count=sum(1 for num in arr if num==candi)
+        
+        if count>len(arr)//2:
+            return candi
+        return -1 
