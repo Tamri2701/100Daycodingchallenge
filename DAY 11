@@ -1,0 +1,44 @@
+#Given the head of a singly linked list, your task is to left rotate the linked list k times.
+
+Examples:
+
+Input: head = 10 -> 20 -> 30 -> 40 -> 50, k = 4
+Output: 50 -> 10 -> 20 -> 30 -> 40
+Explanation:
+Rotate 1: 20 -> 30 -> 40 -> 50 -> 10
+Rotate 2: 30 -> 40 -> 50 -> 10 -> 20
+Rotate 3: 40 -> 50 -> 10 -> 20 -> 30
+Rotate 4: 50 -> 10 -> 20 -> 30 -> 40
+
+
+class Solution:
+    
+    #Function to rotate a linked list.
+    def rotate(self, head, k):
+        # code here
+        if not head or k == 0:
+            return head
+
+     
+        length = 1
+        tail = head
+        while tail.next:
+            tail = tail.next
+            length += 1
+
+      
+        k = k % length
+        if k == 0:
+            return head 
+
+
+        prev = None
+        new_tail = head
+        for _ in range(k):
+            prev = new_tail
+            new_tail = new_tail.next
+
+      
+        prev.next = None  
+        tail.next = head  
+        return new_tail
