@@ -1,0 +1,45 @@
+class Solution {
+    // Function to check whether the list is palindrome.
+    static boolean isPalindrome(Node head) {
+        if (head == null || head.next == null) return true;
+
+    
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+    
+        Node prev = null, curr = slow, nextNode;
+        while (curr != null) {
+            nextNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+
+    
+        Node left = head, right = prev;
+        while (right != null) { 
+            if (left.data != right.data) return false;
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+    }
+}
+
+#question2
+
+    import heapq
+
+class Solution:
+
+    def kthSmallest(self, arr,k):
+        heapq.heapify(arr) 
+        for _ in range(k - 1):
+            heapq.heappop(arr)  
+        return heapq.heappop(arr) 
+        
